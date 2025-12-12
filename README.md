@@ -1,24 +1,23 @@
 # 🏆 Stereo Chorus of Whispers
 
 > **Winner Solution** of the [Cadenza Lyric Intelligibility Prediction (CLIP) Challenge](https://cadenzachallenge.org/docs/clip1/intro) at **ICASSP 2026**
+> 
 > 🥇 **Rank: 1st Place** | [Official Results (T045)](https://cadenzachallenge.org/docs/clip1/results)
 
 
 ![System Architecture](figure.png)
 
----
 
 ## 🛠️ Setup
 
 ### 1. Environment Installation
-We recommend using **Conda** to manage the environment.
 
 ```bash
-conda create -n cadenza python=3.10
-conda activate cadenza
-
 git clone https://github.com/jinlongbin/Stereo-Chorus-of-Whispers.git
 cd Stereo-Chorus-of-Whispers
+
+conda create -n cadenza python=3.10
+conda activate cadenza
 
 # Install PyTorch
 pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu128
@@ -29,7 +28,7 @@ pip install -r requirements.txt
 # Install PESQ (Windows users need conda-forge)
 conda install -c conda-forge pesq
 ```
----
+
 
 ## 🚀 Quick Start (Inference Only)
 You can run inference immediately using pre-trained checkpoint `checkpoints/final/model.pt`for validation and evaluation.
@@ -42,7 +41,7 @@ Outputs:
 
 - `checkpoints/final/eval_inference.csv`
 
----
+
 
 ## 1. Data Preparation (JSON -> CSV)
 - Download the train/valid/eval data packages from [Zenodo](https://zenodo.org/records/17789818).
@@ -82,7 +81,7 @@ Outputs:
 
 **Note**: The CSVs are already generated under `data/cadenza_data_*/metadata/*.csv`, regenerate from JSON if needed.
 
----
+
 
 ## 2. Feature extraction (Whisper scoring)
 
@@ -97,7 +96,7 @@ python whisper_inference.py --config feature_config.yaml --channel=right
 ```
 **Note**: If you are using the provided CSVs, features might already be present. Run these steps to refresh or re-compute.
 
----
+
 
 ## 3. Metric Computation (STOI / eSTOI / PESQ / DNSMOS)
 
@@ -112,7 +111,7 @@ python compute_metrics.py --config feature_config.yaml --dns
 ```
 **Note**: If you are using the provided CSVs, features might already be present. Run these steps to refresh or re-compute.
 
----
+
 
 ## 4. Model training & inference
 
@@ -138,7 +137,7 @@ Outputs
 - `checkpoints/final/valid_inference.csv`
 - `checkpoints/final/eval_inference.csv`
 
----
+
 
 ## Citation
 ```
