@@ -1,0 +1,84 @@
+datasets:
+  - name: train_left
+    split: train
+    csv_path: data/cadenza_data_train/metadata/train_metadata_l.csv
+    signal_dir: data/cadenza_data_train/train/signals
+    degraded_dir: data/cadenza_data_train/train/signals
+    reference_dir: data/cadenza_data_train/train/unprocessed
+    audio_dir: data/cadenza_data_train/train/signals
+    channel: left
+    is_train: true
+  - name: train_right
+    split: train
+    csv_path: data/cadenza_data_train/metadata/train_metadata_r.csv
+    signal_dir: data/cadenza_data_train/train/signals
+    degraded_dir: data/cadenza_data_train/train/signals
+    reference_dir: data/cadenza_data_train/train/unprocessed
+    audio_dir: data/cadenza_data_train/train/signals
+    channel: right
+    is_train: true
+  - name: valid_left
+    split: valid
+    csv_path: data/cadenza_data_valid/metadata/valid_metadata_l.csv
+    signal_dir: data/cadenza_data_valid/valid/signals
+    degraded_dir: data/cadenza_data_valid/valid/signals
+    reference_dir: data/cadenza_data_valid/valid/unprocessed
+    audio_dir: data/cadenza_data_valid/valid/signals
+    channel: left
+    is_train: false
+  - name: valid_right
+    split: valid
+    csv_path: data/cadenza_data_valid/metadata/valid_metadata_r.csv
+    signal_dir: data/cadenza_data_valid/valid/signals
+    degraded_dir: data/cadenza_data_valid/valid/signals
+    reference_dir: data/cadenza_data_valid/valid/unprocessed
+    audio_dir: data/cadenza_data_valid/valid/signals
+    channel: right
+    is_train: false
+  - name: eval_left
+    split: eval
+    csv_path: data/cadenza_data_eval/metadata/eval_metadata_l.csv
+    signal_dir: data/cadenza_data_eval/eval/signals
+    degraded_dir: data/cadenza_data_eval/eval/signals
+    reference_dir: data/cadenza_data_eval/eval/unprocessed
+    audio_dir: data/cadenza_data_eval/eval/signals
+    channel: left
+    is_train: false
+  - name: eval_right
+    split: eval
+    csv_path: data/cadenza_data_eval/metadata/eval_metadata_r.csv
+    signal_dir: data/cadenza_data_eval/eval/signals
+    degraded_dir: data/cadenza_data_eval/eval/signals
+    reference_dir: data/cadenza_data_eval/eval/unprocessed
+    audio_dir: data/cadenza_data_eval/eval/signals
+    channel: right
+    is_train: false
+
+whisper:
+  splits:
+    - eval  # options: train, valid, eval
+  models:
+    - openai/whisper-tiny
+    - openai/whisper-tiny.en
+    - openai/whisper-base
+    - openai/whisper-base.en
+    - openai/whisper-small
+    - openai/whisper-small.en
+    - openai/whisper-medium
+    - openai/whisper-medium.en
+    - openai/whisper-large
+    - openai/whisper-large-v2
+    - openai/whisper-large-v3
+    - openai/whisper-large-v3-turbo
+
+metrics:
+  quality: true
+  dns: true
+  dnsmos_model: sig_bak_ovr.onnx
+  default_datasets:
+    - train_left
+    - train_right
+    - valid_left
+    - valid_right
+    - eval_left
+    - eval_right
