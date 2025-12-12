@@ -50,12 +50,14 @@ data/
       unprocessed/*.flac
 ```
 
-The CSVs are already generated under `data/cadenza_data_*/metadata/*.csv`; regenerate from JSON if needed:
 ```bash
 python metadata_to_csv.py --json data/cadenza_data_train/metadata/train_metadata.json
 python metadata_to_csv.py --json data/cadenza_data_valid/metadata/valid_metadata.json
 python metadata_to_csv.py --json data/cadenza_data_eval/metadata/eval_metadata.json
 ```
+Outputs: `data/cadenza_data_train/metadata/train_metadata_l.csv`, `data/cadenza_data_train/metadata/train_metadata_r.csv`, `data/cadenza_data_valid/metadata/valid_metadata_l.csv`, `data/cadenza_data_valid/metadata/valid_metadata_r.csv`, `data/cadenza_data_eval/metadata/eval_metadata_l.csv`, `data/cadenza_data_eval/metadata/eval_metadata_r.csv`
+
+The CSVs are already generated under `data/cadenza_data_*/metadata/*.csv`, regenerate from JSON if needed.
 
 ---
 
